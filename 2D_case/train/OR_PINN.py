@@ -140,10 +140,12 @@ class PINN(nn.Module):
             return np.load(path)
 
         roots_30 = load_roots(30.0)
+        roots_40 = load_roots(40.0)
+        roots_50 = load_roots(50.0)
 
         self.kle_ln_Ks = KLEField(3.2173, 0.5, 30.0, roots_30[:14], self.L, device)
-        self.kle_ln_alpha = KLEField(-3.3242, 0.3, 30.0, roots_30[:14], self.L, device)
-        self.kle_ln_n = KLEField(0.4447, 0.1, 30.0, roots_30[:14], self.L, device)
+        self.kle_ln_alpha = KLEField(-3.3242, 0.3, 40.0, roots_40[:11], self.L, device)
+        self.kle_ln_n = KLEField(0.4447, 0.1, 50.0, roots_50[:9], self.L, device)
 
         self.net_ln_Ks = StandardMLP(1, 1)
         self.net_ln_alpha = StandardMLP(1, 1)
